@@ -41,6 +41,7 @@
 
     <!-- Shared: tool names -->
     <string name="common_tool_edit_pdf">Edit PDF</string>
+    <string name="common_edit_mode">Edit mode</string>
     <string name="common_tool_read_aloud">Read aloud</string>
     <string name="common_tool_combine">Combine files</string>
     <string name="common_tool_set_password">Set password</string>

@@ -88,6 +88,8 @@ fun ViewerTopBar(
     onRedo: () -> Unit,
     readingAloud: Boolean,
     onReadAloud: () -> Unit,
+    editMode: Boolean,
+    onToggleEditMode: () -> Unit,
     onSearch: (() -> Unit)?,
     onShare: () -> Unit,
     onMore: () -> Unit,
@@ -125,6 +127,8 @@ fun ViewerTopBar(
             Spacer(Modifier.width(14.dp))
             // with something to undo the reference shrinks the switch to a plain speaker button
             if (canUndo && !readingAloud) BarIcon(LucideIcons.Volume2, stringResource(R.string.common_tool_read_aloud), onReadAloud) else ReadAloudSwitch(readingAloud, onReadAloud)
+            Spacer(Modifier.width(8.dp))
+            EditModeSwitch(editMode, onToggleEditMode)
         }
         Spacer(Modifier.weight(1f))
         // while reading aloud the bar holds only back and the switch, as the reference's
@@ -195,6 +199,28 @@ private fun ReadAloudSwitch(on: Boolean, onToggle: () -> Unit) {
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(if (on) LucideIcons.Volume2 else LucideIcons.VolumeOff, null, tint = Color(0xFF222222), modifier = Modifier.size(16.dp))
+            }
+        }
+    }
+}
+
+/** Edit mode beside it: the same switch, carrying a pen; off, the pages stay read-only. */
+@Composable
+private fun EditModeSwitch(on: Boolean, onToggle: () -> Unit) {
+    val c = pdfColors
+    val knob by androidx.compose.animation.core.animateDpAsState(if (on) 22.dp else 2.dp, label = "editKnob")
+    val track by androidx.compose.animation.animateColorAsState(if (on) c.switchOn else c.switchOff, label = "editTrack")
+    val editMode = stringResource(R.string.common_edit_mode)
+    Box(
+        Modifier.size(width = 56.dp, height = 40.dp).clickable(role = Role.Switch, onClick = onToggle).semantics { contentDescription = editMode },
+        contentAlignment = Alignment.CenterStart,
+    ) {
+        Box(Modifier.size(width = 56.dp, height = 28.dp).background(track, androidx.compose.foundation.shape.RoundedCornerShape(14.dp))) {
+            Box(
+                Modifier.offset(x = knob, y = 2.dp).size(width = 32.dp, height = 24.dp).background(Color.White, androidx.compose.foundation.shape.RoundedCornerShape(12.dp)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(LucideIcons.FilePenLine, null, tint = Color(0xFF222222), modifier = Modifier.size(16.dp))
             }
         }
     }

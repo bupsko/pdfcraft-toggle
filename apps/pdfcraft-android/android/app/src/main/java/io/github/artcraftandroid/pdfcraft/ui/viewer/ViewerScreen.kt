@@ -382,6 +382,8 @@ fun ViewerScreen(vm: AppViewModel, doc: OpenDocument) {
                             onRedo = { vm.redo(doc) },
                             readingAloud = vm.readAloud != null,
                             onReadAloud = { vm.readAloud?.stop() ?: vm.startReadAloud(doc) },
+                            editMode = vm.editEnabled,
+                            onToggleEditMode = vm::toggleEditEnabled,
                             // Reading Mode has no search, as the reference's bar shows
                             onSearch = if (vm.readingMode) null else ({
                                 selection.clear()

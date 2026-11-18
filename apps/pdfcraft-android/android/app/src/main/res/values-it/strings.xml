@@ -43,6 +43,7 @@
     <!-- Strumenti comuni -->
 
     <string name="common_tool_edit_pdf">Modifica PDF</string>
+    <string name="common_edit_mode">Modalità di modifica</string>
     <string name="common_tool_read_aloud">Leggi ad alta voce</string>
     <string name="common_tool_combine">Unisci file</string>
     <string name="common_tool_set_password">Imposta password</string>

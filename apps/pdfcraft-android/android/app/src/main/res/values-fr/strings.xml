@@ -33,6 +33,7 @@
 
     <!-- Shared: tool names -->
     <string name="common_tool_edit_pdf">Modifier le PDF</string>
+    <string name="common_edit_mode">Mode dédition</string>
     <string name="common_tool_read_aloud">Lecture à voix haute</string>
     <string name="common_tool_combine">Fusionner des fichiers</string>
     <string name="common_tool_set_password">Définir un mot de passe</string>

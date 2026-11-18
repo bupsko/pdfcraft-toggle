@@ -26,6 +26,7 @@
     <string name="common_today">Dnes</string>
     <string name="common_yesterday">Včera</string>
     <string name="common_tool_edit_pdf">Upraviť PDF</string>
+    <string name="common_edit_mode">Režim úprav</string>
     <string name="common_tool_read_aloud">Čítať nahlas</string>
     <string name="common_tool_combine">Spojiť súbory</string>
     <string name="common_tool_set_password">Nastaviť heslo</string>

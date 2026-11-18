@@ -688,6 +688,21 @@ class AppViewModel(app: Application, private val saved: SavedStateHandle) : Andr
     var readAloud by mutableStateOf<ReadAloud?>(null)
         private set
 
+    /**
+     * Edit mode, the switch beside Read aloud in the top bar: while it is off a long press on the
+     * page never opens Edit PDF, so reading keeps its place and nothing on the page moves; the
+     * pages stay read-only however long the press. Kept across openings and runs.
+     */
+    var editEnabled by mutableStateOf(
+        getApplication<Application>().getSharedPreferences("viewer", android.content.Context.MODE_PRIVATE).getBoolean("editMode", false)
+    )
+        private set
+
+    fun toggleEditEnabled() {
+        editEnabled = !editEnabled
+        getApplication<Application>().getSharedPreferences("viewer", android.content.Context.MODE_PRIVATE).edit().putBoolean("editMode", editEnabled).apply()
+    }
+
     /** The reading notification follows Read aloud: shown while it reads or is paused, gone when it stops. */
     private val readAloudNotice = viewModelScope.launch {
         snapshotFlow { readAloud to (readAloud?.playing == true) }.collect { (ra, playing) ->
@@ -1771,7 +1786,7 @@ class AppViewModel(app: Application, private val saved: SavedStateHandle) : Andr
     fun longPressPage(doc: OpenDocument, at: PagePoint, screen: androidx.compose.ui.geometry.Offset) {
         val eng = engine ?: return
         viewModelScope.launch {
-            val img = imageUnder(doc, at)
+            val img = if (editEnabled) imageUnder(doc, at) else null
             if (img != null) {
                 enterTool(doc, io.github.artcraftandroid.pdfcraft.ui.viewer.ViewerTool.Edit)
                 if (doc.controller.tool == io.github.artcraftandroid.pdfcraft.ui.viewer.ViewerTool.Edit) editImage = img

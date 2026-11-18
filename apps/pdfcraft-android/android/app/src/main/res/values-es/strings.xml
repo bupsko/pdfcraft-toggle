@@ -40,6 +40,7 @@
 
     <!-- Shared: tool names -->
     <string name="common_tool_edit_pdf">Editar PDF</string>
+    <string name="common_edit_mode">Modo de edición</string>
     <string name="common_tool_read_aloud">Leer en voz alta</string>
     <string name="common_tool_combine">Combinar archivos</string>
     <string name="common_tool_set_password">Establecer contraseña</string>

@@ -26,6 +26,7 @@
     <string name="common_today">Hoje</string>
     <string name="common_yesterday">Ontem</string>
     <string name="common_tool_edit_pdf">Editar PDF</string>
+    <string name="common_edit_mode">Modo de edição</string>
     <string name="common_tool_read_aloud">Ler em voz alta</string>
     <string name="common_tool_combine">Combinar arquivos</string>
     <string name="common_tool_set_password">Definir senha</string>

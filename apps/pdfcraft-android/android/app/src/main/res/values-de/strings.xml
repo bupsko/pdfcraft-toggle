@@ -33,6 +33,7 @@
 
     <!-- Shared: tool names -->
     <string name="common_tool_edit_pdf">PDF bearbeiten</string>
+    <string name="common_edit_mode">Bearbeitungsmodus</string>
     <string name="common_tool_read_aloud">Vorlesen</string>
     <string name="common_tool_combine">Dateien zusammenführen</string>
     <string name="common_tool_set_password">Passwort festlegen</string>

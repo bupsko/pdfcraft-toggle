@@ -31,6 +31,7 @@
     <string name="common_today">اليوم</string>
     <string name="common_yesterday">أمس</string>
     <string name="common_tool_edit_pdf">تحرير PDF</string>
+    <string name="common_edit_mode">وضع التحرير</string>
     <string name="common_tool_read_aloud">القراءة بصوت عالٍ</string>
     <string name="common_tool_combine">دمج الملفات</string>
     <string name="common_tool_set_password">تعيين كلمة مرور</string>
