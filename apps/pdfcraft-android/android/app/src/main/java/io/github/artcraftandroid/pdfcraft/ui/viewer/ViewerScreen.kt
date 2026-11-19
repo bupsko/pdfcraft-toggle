@@ -244,6 +244,10 @@ fun ViewerScreen(vm: AppViewModel, doc: OpenDocument) {
             onWheelZoom = { if (desktop) zoomButtons.poke() },
             onLongPress = { p, at ->
                 if (at != null) scope.launch {
+                    // edit mode off: a long press in plain viewing does nothing at all — no word
+                    // selection (so no menu to edit, copy or read aloud), no picture, no page menu;
+                    // with a tool out it is that tool's own long press, as before
+                    if (ctl.tool == ViewerTool.None && !vm.editEnabled) return@launch
                     val slop = 12f / doc.viewer.pixelsPerPoint(at.page).coerceAtLeast(0.1f) * density.density
                     // no word there: a picture, or the page menu, as the reference's long press
                     if (!selection.selectWordAt(at, slop) && ctl.tool == ViewerTool.None && !vm.readingMode) vm.longPressPage(doc, at, p)
